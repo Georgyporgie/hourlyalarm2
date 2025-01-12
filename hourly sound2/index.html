@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<audio id="hourlySound" src="sound/double blast effect.mp3"></audio>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function playSound() {
+        var audio = document.getElementById("hourlySound");
+        audio.play();
+    }
+
+    function scheduleHourlySound() {
+        var now = new Date();
+        var delay = (60 - now.getMinutes()) * 60 * 1000 - now.getSeconds() * 1000;
+        setTimeout(function() {
+            playSound();
+            setInterval(playSound, 3600000); // Play sound every hour
+        }, delay);
+    }
+
+    window.onload = scheduleHourlySound;
+</script>
